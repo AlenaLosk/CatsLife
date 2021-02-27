@@ -1,0 +1,59 @@
+public class Cat {
+    static int count;
+    static int bowl;
+    static int plate;
+    String name;
+    int id;
+
+    public static void setBowl(int bowl) {
+        Cat.bowl = bowl;
+    }
+
+    public static int getBowl() {
+        System.out.println("Сейчас в миске осталось - " + bowl + " ед. воды");
+        return bowl;
+    }
+
+    public static void setPlate(int plate) {
+        Cat.plate = plate;
+    }
+
+    public static int getPlate() {
+        System.out.println("Сейчас в тарелке осталось - " + plate + " ед. еды");
+        return plate;
+    }
+
+    Cat() {
+        count++;
+        this.id = count;
+    }
+
+    Cat(String name) {
+        this();
+        this.name = name;
+    }
+
+    void showNumber() {
+        System.out.println("Порядковый номер кошки " + name + " - " + id);
+    }
+
+    static void showCount() {
+        System.out.println("Общее число кошек - " + count);
+    }
+
+    void eat() {
+        plate -= this.id; // кошка съедает еды в соответствии со своим порядковым номером
+        if (plate < 1) {
+            plate = 0;
+            System.out.println("Еда закончилась!");
+        }
+    }
+
+    void drink() {
+        bowl -= this.id * 2; // кошка выпивает воды в 2 раза больше, чем ее порядковый номер
+        if (bowl < 1) {
+            bowl = 0;
+            System.out.println("Вода закончилась!");
+        }
+    }
+}
